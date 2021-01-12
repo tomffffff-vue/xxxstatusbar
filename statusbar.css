@@ -1,0 +1,308 @@
+/* === Statusbar === */
+:root {
+  --safe-area-inset-top:34px;
+}
+.statusbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: none;
+  height: var(--safe-area-inset-top);
+}
+html.with-statusbar .statusbar {
+  display: block;
+}
+html.with-statusbar .framework7-root {
+  padding-top: var(--safe-area-inset-top);
+}
+.ios .statusbar {
+  background-color: rgb(var(--f7-navbar-bg-color-rgb,var(--f7-bars-bg-color-rgb)));
+}
+html.with-statusbar.device-ios.ios .statusbar {
+  background-color: rgba(var(--f7-navbar-bg-color-rgb,var(--f7-bars-bg-color-rgb)),var(--f7-bars-translucent-opacity));
+}
+
+@media all and (max-width: 629px), (max-height: 629px) {
+  html.with-statusbar .popup-backdrop {
+    z-index: 9500;
+  }
+  html.with-statusbar .popup {
+    height: calc(100% - var(--safe-area-inset-top));
+    top: var(--safe-area-inset-top);
+  }
+}
+@media all and (min-width: 630px), (min-height: 630px) {
+  html.with-statusbar .popup-tablet-fullscreen {
+    height: calc(100% - var(--safe-area-inset-top));
+    top: var(--safe-area-inset-top);
+  }
+}
+html.with-statusbar .toast-top {
+  margin-top: var(--safe-area-inset-top);
+}
+html.with-statusbar body > .progressbar,
+html.with-statusbar .view > .progressbar,
+html.with-statusbar .views > .progressbar,
+html.with-statusbar .page > .progressbar,
+html.with-statusbar .panel > .progressbar,
+html.with-statusbar .popup > .progressbar,
+html.with-statusbar .framework7-root > .progressbar,
+html.with-statusbar body > .progressbar-infinite,
+html.with-statusbar .view > .progressbar-infinite,
+html.with-statusbar .views > .progressbar-infinite,
+html.with-statusbar .page > .progressbar-infinite,
+html.with-statusbar .panel > .progressbar-infinite,
+html.with-statusbar .popup > .progressbar-infinite,
+html.with-statusbar .framework7-root > .progressbar-infinite {
+  top: var(--safe-area-inset-top);
+}
+html.with-statusbar .panel {
+  height: calc(100% - var(--safe-area-inset-top));
+  top: var(--safe-area-inset-top);
+}
+html.with-statusbar .notification {
+  margin-top: var(--safe-area-inset-top);
+}
+/*
+html.device-ios .statusbar,
+html.ios:not(.device-ios):not(.device-android) .statusbar {
+  height: 20px;
+}
+html.device-android .statusbar,
+html.md:not(.device-ios):not(.device-android) .statusbar {
+  height: 24px;
+}
+html.device-ios.device-iphone-x .statusbar {
+  height: constant(safe-area-inset-top);
+  height: env(safe-area-inset-top);
+  height: var(--safe-area-inset-top);
+}
+html.with-statusbar .statusbar {
+  display: block;
+}
+html.with-statusbar.device-ios .framework7-root,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root {
+  padding-top: 20px;
+}
+html.with-statusbar.device-android .framework7-root,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root {
+  padding-top: 24px;
+}
+html.with-statusbar.device-iphone-x .framework7-root {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding-top: var(--safe-area-inset-top);
+}
+.ios .statusbar {
+  background-color: rgb(var(--f7-navbar-bg-color-rgb,var(--f7-bars-bg-color-rgb)));
+}
+html.with-statusbar.device-ios.ios .statusbar {
+  background-color: rgba(var(--f7-navbar-bg-color-rgb,var(--f7-bars-bg-color-rgb)),var(--f7-bars-translucent-opacity));
+}
+.ios .theme-dark .statusbar {
+  background-color: #1b1b1b;
+}
+.md .statusbar {
+  background: #0a6ebd;
+}
+.md .color-theme-red .statusbar {
+  background: #d2190b;
+}
+.md .color-theme-green .statusbar {
+  background: #357a38;
+}
+.md .color-theme-blue .statusbar {
+  background: #0a6ebd;
+}
+.md .color-theme-pink .statusbar {
+  background: #aa1145;
+}
+.md .color-theme-yellow .statusbar {
+  background: #eed500;
+}
+.md .color-theme-orange .statusbar {
+  background: #b36a00;
+}
+.md .color-theme-gray .statusbar {
+  background: #787878;
+}
+.md .color-theme-white .statusbar {
+  background: #d9d9d9;
+}
+.md .color-theme-black .statusbar {
+  background: #000000;
+}
+@media all and (max-width: 629px), (max-height: 629px) {
+  html.with-statusbar .popup-backdrop {
+    z-index: 9500;
+  }
+  html.with-statusbar.device-ios .popup,
+  html.with-statusbar.ios:not(.device-ios):not(.device-android) .popup {
+    height: calc(100% - 20px);
+    top: 20px;
+  }
+  html.with-statusbar.device-iphone-x .popup {
+    height: calc(100% - constant(safe-area-inset-top));
+    height: calc(100% - env(safe-area-inset-top));
+    height: calc(100% - var(--safe-area-inset-top));
+    top: constant(safe-area-inset-top);
+    top: env(safe-area-inset-top);
+    top: var(--safe-area-inset-top);
+  }
+  html.with-statusbar.device-android .popup,
+  html.with-statusbar.md:not(.device-ios):not(.device-android) .popup {
+    height: calc(100% - 24px);
+    top: 24px;
+  }
+}
+@media all and (min-width: 630px), (min-height: 630px) {
+  html.with-statusbar.device-ios .popup-tablet-fullscreen,
+  html.with-statusbar.ios:not(.device-ios):not(.device-android) .popup-tablet-fullscreen {
+    height: calc(100% - 20px);
+    top: 20px;
+  }
+  html.with-statusbar.device-iphone-x .popup-tablet-fullscreen {
+    height: calc(100% - constant(safe-area-inset-top));
+    height: calc(100% - env(safe-area-inset-top));
+    height: calc(100% - var(--safe-area-inset-top));
+    top: constant(safe-area-inset-top);
+    top: env(safe-area-inset-top);
+    top: var(--safe-area-inset-top);
+  }
+  html.with-statusbar.device-android .popup-tablet-fullscreen,
+  html.with-statusbar.md:not(.device-ios):not(.device-android) .popup-tablet-fullscreen {
+    height: calc(100% - 24px);
+    top: 24px;
+  }
+}
+html.with-statusbar.device-ios .toast-top,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .toast-top {
+  margin-top: 20px;
+}
+html.with-statusbar.device-iphone-x .toast-top {
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+  margin-top: var(--safe-area-inset-top);
+}
+html.with-statusbar.device-android .toast-top,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .toast-top {
+  margin-top: 24px;
+}
+html.with-statusbar.device-ios body > .progressbar,
+html.with-statusbar.device-ios .view > .progressbar,
+html.with-statusbar.device-ios .views > .progressbar,
+html.with-statusbar.device-ios .page > .progressbar,
+html.with-statusbar.device-ios .panel > .progressbar,
+html.with-statusbar.device-ios .popup > .progressbar,
+html.with-statusbar.device-ios .framework7-root > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) body > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .view > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .views > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .page > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .panel > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .popup > .progressbar,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root > .progressbar,
+html.with-statusbar.device-ios body > .progressbar-infinite,
+html.with-statusbar.device-ios .view > .progressbar-infinite,
+html.with-statusbar.device-ios .views > .progressbar-infinite,
+html.with-statusbar.device-ios .page > .progressbar-infinite,
+html.with-statusbar.device-ios .panel > .progressbar-infinite,
+html.with-statusbar.device-ios .popup > .progressbar-infinite,
+html.with-statusbar.device-ios .framework7-root > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) body > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .view > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .views > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .page > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .panel > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .popup > .progressbar-infinite,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .framework7-root > .progressbar-infinite {
+  top: 20px;
+}
+html.with-statusbar.device-android body > .progressbar,
+html.with-statusbar.device-android .view > .progressbar,
+html.with-statusbar.device-android .views > .progressbar,
+html.with-statusbar.device-android .page > .progressbar,
+html.with-statusbar.device-android .panel > .progressbar,
+html.with-statusbar.device-android .popup > .progressbar,
+html.with-statusbar.device-android .framework7-root > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) body > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .view > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .views > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .page > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .panel > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .popup > .progressbar,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root > .progressbar,
+html.with-statusbar.device-android body > .progressbar-infinite,
+html.with-statusbar.device-android .view > .progressbar-infinite,
+html.with-statusbar.device-android .views > .progressbar-infinite,
+html.with-statusbar.device-android .page > .progressbar-infinite,
+html.with-statusbar.device-android .panel > .progressbar-infinite,
+html.with-statusbar.device-android .popup > .progressbar-infinite,
+html.with-statusbar.device-android .framework7-root > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) body > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .view > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .views > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .page > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .panel > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .popup > .progressbar-infinite,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .framework7-root > .progressbar-infinite {
+  top: 24px;
+}
+.with-statusbar.device-iphone-x body > .progressbar,
+.with-statusbar.device-iphone-x .view > .progressbar,
+.with-statusbar.device-iphone-x .views > .progressbar,
+.with-statusbar.device-iphone-x .page > .progressbar,
+.with-statusbar.device-iphone-x .panel > .progressbar,
+.with-statusbar.device-iphone-x .popup > .progressbar,
+.with-statusbar.device-iphone-x .framework7-root > .progressbar,
+.with-statusbar.device-iphone-x body > .progressbar-infinite,
+.with-statusbar.device-iphone-x .view > .progressbar-infinite,
+.with-statusbar.device-iphone-x .views > .progressbar-infinite,
+.with-statusbar.device-iphone-x .page > .progressbar-infinite,
+.with-statusbar.device-iphone-x .panel > .progressbar-infinite,
+.with-statusbar.device-iphone-x .popup > .progressbar-infinite,
+.with-statusbar.device-iphone-x .framework7-root > .progressbar-infinite {
+  top: constant(safe-area-inset-top);
+  top: env(safe-area-inset-top);
+  top: var(--safe-area-inset-top);
+}
+html.with-statusbar.device-ios .panel,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .panel {
+  top: 20px;
+  height: calc(100% - 20px);
+}
+html.with-statusbar.device-android .panel,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .panel {
+  top: 24px;
+  height: calc(100% - 24px);
+}
+html.with-statusbar.device-iphone-x .panel {
+  
+  top: constant(safe-area-inset-top);
+  top: env(safe-area-inset-top);
+  top: var(--safe-area-inset-top);
+  
+  height: calc(100% - constant(safe-area-inset-top));
+  height: calc(100% - env(safe-area-inset-top));
+  height: calc(100% - var(--safe-area-inset-top));
+}
+html.with-statusbar.device-ios .notification,
+html.with-statusbar.ios:not(.device-ios):not(.device-android) .notification {
+  margin-top: 20px;
+}
+html.with-statusbar.device-android .notification,
+html.with-statusbar.md:not(.device-ios):not(.device-android) .notification {
+  margin-top: 24px;
+}
+html.with-statusbar.device-iphone-x .notification {
+  
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+  margin-top: var(--safe-area-inset-top);
+}
+
+*/
